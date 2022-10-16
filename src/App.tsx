@@ -3,18 +3,22 @@ import { GlobalPortal } from './GlobalPortal';
 import { Router } from 'pages/Routes';
 import { ReactNode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Container } from '@mui/material';
+import { Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { theme } from 'styles/theme';
 
 export default function App() {
   // import env variables
   console.log(import.meta.env.VITE_TEST);
   return (
     <BrowserRouter>
-      <GlobalPortal.Provider>
-        <Layout>
-          <Router />
-        </Layout>
-      </GlobalPortal.Provider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <GlobalPortal.Provider>
+          <Layout>
+            <Router />
+          </Layout>
+        </GlobalPortal.Provider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
