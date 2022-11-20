@@ -2,17 +2,25 @@ import { DoubleArrow } from '@mui/icons-material';
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const Page = (): JSX.Element => {
+const MainPage = (): JSX.Element => {
   return (
     <Stack>
       <Typography variant="h1">React experiments</Typography>
-      <List>
-        <ListItem>
+      <List sx={{ mb: 2 }}>
+        <ListItem disablePadding>
           <ListItemButton component={Link} to="/memo-rerendering">
             <ListItemIcon>
               <DoubleArrow />
             </ListItemIcon>
-            <ListItemText primary="Memo Rerendering (state changes)" />
+            <ListItemText primary="Memo, rerendering and state changes" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton component={Link} to="/prop-change">
+            <ListItemIcon>
+              <DoubleArrow />
+            </ListItemIcon>
+            <ListItemText primary="Props change, memo and useMemo" />
           </ListItemButton>
         </ListItem>
       </List>
@@ -25,9 +33,18 @@ const Page = (): JSX.Element => {
             React re-renders guide: everything, all at once
           </a>
         </li>
+        <li>
+          <a
+            href="https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            A (Mostly) Complete Guide to React Rendering Behavior
+          </a>
+        </li>
       </ul>
     </Stack>
   );
 };
 
-export default Page;
+export default MainPage;

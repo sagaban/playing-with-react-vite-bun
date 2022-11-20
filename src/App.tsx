@@ -24,5 +24,5 @@ export default function App() {
 }
 
 function Layout({ children }: { children: ReactNode }) {
-  return <Container>{children}</Container>;
+  return <Container sx={{ mt: 2 }}>{children}</Container>;
 }

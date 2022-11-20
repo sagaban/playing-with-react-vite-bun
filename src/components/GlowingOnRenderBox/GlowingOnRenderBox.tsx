@@ -1,4 +1,4 @@
-import { Box, useTheme } from '@mui/material';
+import { Box, Chip, Tooltip, useTheme } from '@mui/material';
 import { useEffect, useRef } from 'react';
 
 interface GlowingOnRenderBoxProps {
@@ -45,6 +45,13 @@ export const GlowingOnRenderBox = (props: GlowingOnRenderBoxProps): JSX.Element 
           borderRadius: 1,
         }}
       >
+        <Tooltip title="Rerenders counter">
+          <Chip
+            label={renderCount}
+            sx={{ position: 'absolute', top: '10px', right: '10px', backgroundColor: 'secondary.dark' }}
+          />
+        </Tooltip>
+
         {props.children}
       </Box>
     </Box>
