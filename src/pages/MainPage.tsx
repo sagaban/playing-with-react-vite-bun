@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const MainPage = (): JSX.Element => {
   return (
     <Stack>
-      <Typography variant="h1">React experiments</Typography>
+      <Typography variant="h1">Avoiding re-renders</Typography>
       <List sx={{ mb: 2 }}>
         <ListItem disablePadding>
           <ListItemButton component={Link} to="/memo-rerendering">
@@ -21,6 +21,14 @@ const MainPage = (): JSX.Element => {
               <DoubleArrow />
             </ListItemIcon>
             <ListItemText primary="Props change, memo and useMemo" />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton component={Link} to="/moving-state-down">
+            <ListItemIcon>
+              <DoubleArrow />
+            </ListItemIcon>
+            <ListItemText primary="Moving state down" />
           </ListItemButton>
         </ListItem>
       </List>
