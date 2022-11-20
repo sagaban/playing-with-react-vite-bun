@@ -28,4 +28,5 @@ export default defineConfig({
     },
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
+  base: '/playing-with-react-vite-bun/',
 });
