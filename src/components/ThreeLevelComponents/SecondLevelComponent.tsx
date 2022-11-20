@@ -1,4 +1,4 @@
-import { GlowingOnRenderBox } from 'components/GlowingOnRenderBox/GlowingOnRenderBox';
+import { GlowingOnRenderBox } from 'components/GlowingOnRenderBox';
 import { useRef } from 'react';
 import { ThirdLevelComponent } from './ThirdLevelComponent';
 

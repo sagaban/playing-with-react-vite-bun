@@ -1,5 +1,5 @@
 import { Box, Button } from '@mui/material';
-import { GlowingOnRenderBox } from 'components/GlowingOnRenderBox/GlowingOnRenderBox';
+import { GlowingOnRenderBox } from 'components/GlowingOnRenderBox';
 import { memo, useRef, useState } from 'react';
 import { MemoSecondLevelComponent } from './MemoSecondLevelComponent';
 
