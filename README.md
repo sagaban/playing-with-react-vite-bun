@@ -1,18 +1,26 @@
-### This Frontend Tempate
-- made by suhyeon
+# React re-rendering avoidance examples
 
-# Before use Bun you have to [install](https://bun.sh/) Bun
-* curl https://bun.sh/install | bash 
-1. bun install - use bun => fast
-2. vite - fast
-3. fast + fast => so fast
+A series of examples and pattern on how to avoid React to rerenders.
 
-## how to start
+## Deployed app
+
+https://sagaban.github.io/playing-with-react-vite-bun/
+
+## Development
+
+### Before use Bun you have to [install](https://bun.sh/) Bun
+
+- `curl https://bun.sh/install | bash`
+
+### How to start
+
 1. `bun install`
 2. `bun run dev`
-3. you can use on `http://localhost:3000`
 
--> if you want to change bun -> yarn
-1. remove file `bun.lockb`
-2. remove folder `node_modules`
-3. `yarn`
+### Deploy to Github Pages
+
+- `./deploy.sh`
+
+## Acknowledgments
+
+- [I use this template](https://github.com/SuhyeonP/Bun-Vite-React-Template) made by suhyeon
