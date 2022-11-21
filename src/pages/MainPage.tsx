@@ -3,34 +3,39 @@ import { List, ListItem, ListItemButton, ListItemIcon, ListItemText, Stack, Typo
 import { Link } from 'react-router-dom';
 
 const MainPage = (): JSX.Element => {
+  const routesList = [
+    {
+      to: '/memo-rerendering',
+      label: 'State changes and memo',
+    },
+    {
+      to: '/props-change',
+      label: 'Props change, memo and useMemo',
+    },
+    {
+      to: '/moving-state-down',
+      label: 'Moving state down',
+    },
+    {
+      to: '/children-as-props',
+      label: 'Children as props',
+    },
+  ];
+
   return (
     <Stack>
       <Typography variant="h1">Avoiding re-renders</Typography>
       <List sx={{ mb: 2 }}>
-        <ListItem disablePadding>
-          <ListItemButton component={Link} to="/memo-rerendering">
-            <ListItemIcon>
-              <DoubleArrow />
-            </ListItemIcon>
-            <ListItemText primary="Memo, rerendering and state changes" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton component={Link} to="/prop-change">
-            <ListItemIcon>
-              <DoubleArrow />
-            </ListItemIcon>
-            <ListItemText primary="Props change, memo and useMemo" />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding>
-          <ListItemButton component={Link} to="/moving-state-down">
-            <ListItemIcon>
-              <DoubleArrow />
-            </ListItemIcon>
-            <ListItemText primary="Moving state down" />
-          </ListItemButton>
-        </ListItem>
+        {routesList.map(route => (
+          <ListItem disablePadding key={route.to}>
+            <ListItemButton component={Link} to={route.to}>
+              <ListItemIcon>
+                <DoubleArrow />
+              </ListItemIcon>
+              <ListItemText primary={route.label} />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
       <Typography variant="h4" component="h2">
         References

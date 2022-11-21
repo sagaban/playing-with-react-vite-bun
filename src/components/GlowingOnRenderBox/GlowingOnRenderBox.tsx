@@ -1,7 +1,8 @@
-import { Box, Chip, Tooltip, useTheme } from '@mui/material';
+import { Box, Chip, Tooltip, useTheme, BoxProps } from '@mui/material';
+import { omit } from 'lodash-es';
 import { useEffect, useRef } from 'react';
 
-interface GlowingOnRenderBoxProps {
+interface GlowingOnRenderBoxProps extends BoxProps {
   children: React.ReactNode;
 }
 export const GlowingOnRenderBox = (props: GlowingOnRenderBoxProps): JSX.Element => {
@@ -22,8 +23,10 @@ export const GlowingOnRenderBox = (props: GlowingOnRenderBoxProps): JSX.Element 
     }, 150);
   }, [renderCount]);
 
+  const rest = omit(props, ['sx', 'children']);
+
   return (
-    <Box sx={{ p: 0.5, width: '100%', height: '100%', position: 'relative' }}>
+    <Box sx={{ p: 0.5, width: '100%', height: '100%', position: 'relative', ...(props.sx ?? {}) }} {...rest}>
       <Box
         ref={backgroundEl}
         sx={{

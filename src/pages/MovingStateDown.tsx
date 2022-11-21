@@ -9,7 +9,7 @@ export const MovingStateDown = (): JSX.Element => {
       <Typography variant="h1">Moving state down</Typography>
       <Box sx={{ py: 2 }}>
         <Typography variant="h3" component="h2">
-          Preventing re-renders with composition: moving state down
+          Preventing re-renders with composition: <b>moving state down</b>
         </Typography>
         This pattern can be beneficial when a heavy component manages state, and this state is only used on a small
         isolated portion of the render tree. A typical example would be opening/closing a dialog with a button click in

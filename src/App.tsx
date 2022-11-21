@@ -10,7 +10,7 @@ export default function App() {
   // import env variables
   console.log(import.meta.env.VITE_TEST);
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/playing-with-react-vite-bun">
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <GlobalPortal.Provider>
