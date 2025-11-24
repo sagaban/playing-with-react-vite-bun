@@ -19,7 +19,24 @@ https://sagaban.github.io/playing-with-react-vite-bun/
 
 ### Deploy to Github Pages
 
-- `./deploy.sh`
+#### Automatic Deployment (Recommended)
+The project is configured with GitHub Actions to automatically deploy when you push to the `main` or `master` branch. Just push your changes and the workflow will handle the deployment.
+
+To enable GitHub Pages:
+1. Go to your repository settings on GitHub
+2. Navigate to "Pages" in the left sidebar
+3. Under "Source", select "GitHub Actions"
+
+#### Manual Deployment
+You can also deploy manually using the deploy script:
+
+```bash
+bun run deploy
+# or
+./deploy.sh
+```
+
+This will build the project and push it to the `gh-pages` branch.
 
 ## Acknowledgments
 
