@@ -1,4 +1,5 @@
 import { Box, Typography, Grid } from '@mui/material';
+import { CodeDisplay } from 'components/CodeDisplay';
 import { GoBackButton } from 'components/GoBackButton';
 import { OnScrollComponent, OnScrollOnParent } from 'components/OnScrollComponent';
 
@@ -21,18 +22,59 @@ export const ChildrenAsProps = (): JSX.Element => {
           The mystery of React Element, children, parents and re-renders
         </a>
       </Box>
-      <Grid container columnSpacing={2}>
-        <Grid size={6}>
+      <Grid container spacing={2}>
+        <Grid size={12}>
           <Typography variant="h2">State in parent</Typography>
         </Grid>
-        <Grid size={6}>
-          <Typography variant="h2">State in child</Typography>
-        </Grid>
-        <Grid size={6}>
+        <Grid size={6} offset={3}>
           <OnScrollOnParent />
         </Grid>
-        <Grid size={6}>
+        <Grid size={12}>
+          <CodeDisplay
+            code={`const OnScrollOnParent = (): JSX.Element => {
+  const [, setScroll] = useState({});
+  return (
+    <GlowingOnRenderBox onScroll={e => setScroll(e)} sx={{ height: '200px', overflowY: 'scroll' }}>
+      <Box sx={{ mt: 4, height: '300px' }}>
+        I am the parent and handle scroll events
+        <GlowingOnRenderBox sx={{ height: '120px' }}>I am an expensive component</GlowingOnRenderBox>
+      </Box>
+    </GlowingOnRenderBox>
+  );
+};
+            `}
+          />
+        </Grid>
+        <Grid size={12}>
+          <Typography variant="h2">State in child</Typography>
+        </Grid>
+        <Grid size={6} offset={3}>
           <OnScrollComponent />
+        </Grid>
+        <Grid size={12}>
+          <CodeDisplay
+            code={`const ComponentWithScroll = ({ children }: { children: JSX.Element }): JSX.Element => {
+  const [, setScroll] = useState({});
+  return (
+    <GlowingOnRenderBox onScroll={e => setScroll(e)} sx={{ height: '200px', overflowY: 'scroll' }}>
+      I am a component that handles the scroll and render children
+      {children}
+    </GlowingOnRenderBox>
+  );
+};
+
+const OnScrollComponent = (): JSX.Element => {
+  return (
+    <ComponentWithScroll>
+      <Box sx={{ mt: 1, height: '300px' }}>
+        <Box>I am the parent</Box>
+        <GlowingOnRenderBox sx={{ height: '150px' }}>I am an expensive component</GlowingOnRenderBox>
+      </Box>
+    </ComponentWithScroll>
+  );
+};
+            `}
+          />
         </Grid>
       </Grid>
     </>

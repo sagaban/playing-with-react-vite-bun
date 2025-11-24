@@ -1,4 +1,5 @@
 import { Box, Typography, Grid } from '@mui/material';
+import { CodeDisplay } from 'components/CodeDisplay';
 import { GoBackButton } from 'components/GoBackButton';
 import { MemoPropValueChangeTree, PropValueChangeTree } from 'components/PropValueChangeTree';
 import { MemoSamePropValueTree, SamePropValueTree } from 'components/SamePropValueTree';
@@ -19,21 +20,65 @@ const PropsChange = (): JSX.Element => {
         memoization techniques are used (<code>React.memo</code>, <code>useMemo</code>), then props change becomes
         important.
       </Box>
-      <Grid container columnSpacing={2}>
+      <Grid container spacing={2}>
         <Grid size={12} sx={{ mt: 2 }}>
           <Typography variant="h2">Same prop value</Typography>
         </Grid>
-        <Grid size={6} sx={{ mt: 1 }}>
+        <Grid size={12} sx={{ mt: 1 }}>
           <Typography variant="h3">Without memorization</Typography>
         </Grid>
-        <Grid size={6} sx={{ mt: 1 }}>
-          <Typography variant="h3">With memorization</Typography>
-        </Grid>
-        <Grid size={6}>
+        <Grid size={6} offset={3}>
           <SamePropValueTree />
         </Grid>
-        <Grid size={6}>
+        <Grid size={12}>
+          <CodeDisplay
+            code={`const sameValue = { text: 'Testing 123' };
+
+const SamePropValueTree = (): JSX.Element => {
+  const [, setCounter] = useState(0);
+  return (
+    <GlowingOnRenderBox>
+      <Button onClick={() => setCounter(c => c + 1)}>Re render the parent</Button>
+      <Box m={1}> I am the parent</Box>
+      <SamePropValueChild value={sameValue} />
+    </GlowingOnRenderBox>
+  );
+};
+
+const SamePropValueChild = ({ value }: { value: { text: string } }) => {
+  return <GlowingOnRenderBox> I am the child and receives {value.text}</GlowingOnRenderBox>;
+};
+          `}
+          />
+        </Grid>
+        <Grid size={12} sx={{ mt: 1 }}>
+          <Typography variant="h3">With memorization</Typography>
+        </Grid>
+        <Grid size={6} offset={3}>
           <MemoSamePropValueTree />
+        </Grid>
+        <Grid size={12}>
+          <CodeDisplay
+            code={`const sameValue = { text: 'Testing 123' };
+
+const MemoSamePropValueChild = memo(SamePropValueChild);
+
+const MemoSamePropValueTree = (): JSX.Element => {
+  const [, setCounter] = useState(0);
+  return (
+    <GlowingOnRenderBox>
+      <Button onClick={() => setCounter(c => c + 1)}>Re render the parent</Button>
+      <Box m={1}> I am the parent and use memo child</Box>
+      <MemoSamePropValueChild value={sameValue} />
+    </GlowingOnRenderBox>
+  );
+};
+
+const SamePropValueChild = ({ value }: { value: { text: string } }) => {
+  return <GlowingOnRenderBox> I am the child and receives {value.text}</GlowingOnRenderBox>;
+};
+          `}
+          />
         </Grid>
         <Grid size={12} sx={{ mt: 2 }}>
           <Typography variant="h2">Value prop changes</Typography>
@@ -41,17 +86,63 @@ const PropsChange = (): JSX.Element => {
             string
           </code>, <code>useMemo</code> is not needed
         </Grid>
-        <Grid size={6} sx={{ mt: 1 }}>
+        <Grid size={12} sx={{ mt: 1 }}>
           <Typography variant="h3">With just memorization</Typography>
         </Grid>
-        <Grid size={6} sx={{ mt: 1 }}>
-          <Typography variant="h3">With memorization and useMemo</Typography>
-        </Grid>
-        <Grid size={6} sx={{ mt: 1 }}>
+        <Grid size={6} offset={3}>
           <PropValueChangeTree />
         </Grid>
-        <Grid size={6} sx={{ mt: 1 }}>
+        <Grid size={12}>
+          <CodeDisplay
+            code={`const MemoPropValueChangeChild = memo(PropValueChangeChild);
+
+const PropValueChangeTree = (): JSX.Element => {
+  const [, setCounter] = useState(0);
+  const componentValue = { text: 'Testing 123' };
+
+  return (
+    <GlowingOnRenderBox>
+      <Button onClick={() => setCounter(c => c + 1)}>Re render the parent</Button>
+      <Box m={1}> I am the parent and use memo child</Box>
+      <MemoPropValueChangeChild value={componentValue} />
+    </GlowingOnRenderBox>
+  );
+};
+
+const PropValueChangeChild = ({ value }: { value: { text: string } }) => {
+  return <GlowingOnRenderBox> I am the child and receives {value.text}</GlowingOnRenderBox>;
+};
+          `}
+          />
+        </Grid>
+        <Grid size={12} sx={{ mt: 1 }}>
+          <Typography variant="h3">With memorization and useMemo</Typography>
+        </Grid>
+        <Grid size={6} offset={3}>
           <MemoPropValueChangeTree />
+        </Grid>
+        <Grid size={12}>
+          <CodeDisplay
+            code={`const MemoPropValueChangeChild = memo(PropValueChangeChild);
+
+const MemoPropValueChangeTree = (): JSX.Element => {
+  const [, setCounter] = useState(0);
+  const componentValue = useMemo(() => ({ text: 'Testing 123' }), []);
+
+  return (
+    <GlowingOnRenderBox>
+      <Button onClick={() => setCounter(c => c + 1)}>Re render the parent</Button>
+      <Box m={1}> I am the parent and use memo child and useMemo hook</Box>
+      <MemoPropValueChangeChild value={componentValue} />
+    </GlowingOnRenderBox>
+  );
+};
+
+const PropValueChangeChild = ({ value }: { value: { text: string } }) => {
+  return <GlowingOnRenderBox> I am the child and receives {value.text}</GlowingOnRenderBox>;
+};
+            `}
+          />
         </Grid>
       </Grid>
     </>
