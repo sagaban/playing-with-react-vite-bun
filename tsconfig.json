@@ -18,14 +18,11 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@emotion/react",
     "paths": {
-      "pages/*": [
-        "pages/*"
-      ],
-      "hook/*": [
-        "hook/*"
-      ]
+      "pages/*": ["pages/*"],
+      "hook/*": ["hook/*"]
     }
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "typeRoots": ["./node_modules/@types", "./src/globals.d.ts"]
 }

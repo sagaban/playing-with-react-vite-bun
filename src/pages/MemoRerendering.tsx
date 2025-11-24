@@ -1,4 +1,4 @@
-import { Box, Typography, Unstable_Grid2 as Grid } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import { GoBackButton } from 'components/GoBackButton';
 import { MemoFirstLevelComponent } from 'components/MemoThreeLevelComponents/MemoFirstLevelComponent';
 import { FirstLevelComponent } from 'components/ThreeLevelComponents/FirstLevelComponent';
@@ -16,16 +16,16 @@ const MemoRerendering = (): JSX.Element => {
         <code> useEffect</code> hook. State changes are the “root” source of all re-renders.
       </Box>
       <Grid container columnSpacing={2}>
-        <Grid xs={6}>
+        <Grid size={6}>
           <Typography variant="h2">Without memorization</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid size={6}>
           <Typography variant="h2">With memorization</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid size={6}>
           <FirstLevelComponent />
         </Grid>
-        <Grid xs={6}>
+        <Grid size={6}>
           <MemoFirstLevelComponent />
         </Grid>
       </Grid>

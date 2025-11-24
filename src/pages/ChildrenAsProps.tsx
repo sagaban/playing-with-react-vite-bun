@@ -1,4 +1,4 @@
-import { Box, Typography, Unstable_Grid2 as Grid } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import { GoBackButton } from 'components/GoBackButton';
 import { OnScrollComponent, OnScrollOnParent } from 'components/OnScrollComponent';
 
@@ -22,16 +22,16 @@ export const ChildrenAsProps = (): JSX.Element => {
         </a>
       </Box>
       <Grid container columnSpacing={2}>
-        <Grid xs={6}>
+        <Grid size={6}>
           <Typography variant="h2">State in parent</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid size={6}>
           <Typography variant="h2">State in child</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid size={6}>
           <OnScrollOnParent />
         </Grid>
-        <Grid xs={6}>
+        <Grid size={6}>
           <OnScrollComponent />
         </Grid>
       </Grid>

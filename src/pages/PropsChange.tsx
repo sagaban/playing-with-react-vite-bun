@@ -1,4 +1,4 @@
-import { Box, Typography, Unstable_Grid2 as Grid } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import { GoBackButton } from 'components/GoBackButton';
 import { MemoPropValueChangeTree, PropValueChangeTree } from 'components/PropValueChangeTree';
 import { MemoSamePropValueTree, SamePropValueTree } from 'components/SamePropValueTree';
@@ -20,37 +20,37 @@ const PropsChange = (): JSX.Element => {
         important.
       </Box>
       <Grid container columnSpacing={2}>
-        <Grid xs={12} sx={{ mt: 2 }}>
+        <Grid size={12} sx={{ mt: 2 }}>
           <Typography variant="h2">Same prop value</Typography>
         </Grid>
-        <Grid xs={6} sx={{ mt: 1 }}>
+        <Grid size={6} sx={{ mt: 1 }}>
           <Typography variant="h3">Without memorization</Typography>
         </Grid>
-        <Grid xs={6} sx={{ mt: 1 }}>
+        <Grid size={6} sx={{ mt: 1 }}>
           <Typography variant="h3">With memorization</Typography>
         </Grid>
-        <Grid xs={6}>
+        <Grid size={6}>
           <SamePropValueTree />
         </Grid>
-        <Grid xs={6}>
+        <Grid size={6}>
           <MemoSamePropValueTree />
         </Grid>
-        <Grid xs={12} sx={{ mt: 2 }}>
+        <Grid size={12} sx={{ mt: 2 }}>
           <Typography variant="h2">Value prop changes</Typography>
           As the value is an object that is defined every time the parents in re-redendered. With <code>
             string
           </code>, <code>useMemo</code> is not needed
         </Grid>
-        <Grid xs={6} sx={{ mt: 1 }}>
+        <Grid size={6} sx={{ mt: 1 }}>
           <Typography variant="h3">With just memorization</Typography>
         </Grid>
-        <Grid xs={6} sx={{ mt: 1 }}>
+        <Grid size={6} sx={{ mt: 1 }}>
           <Typography variant="h3">With memorization and useMemo</Typography>
         </Grid>
-        <Grid xs={6} sx={{ mt: 1 }}>
+        <Grid size={6} sx={{ mt: 1 }}>
           <PropValueChangeTree />
         </Grid>
-        <Grid xs={6} sx={{ mt: 1 }}>
+        <Grid size={6} sx={{ mt: 1 }}>
           <MemoPropValueChangeTree />
         </Grid>
       </Grid>
