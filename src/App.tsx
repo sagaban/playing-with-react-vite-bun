@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import { GlobalPortal } from './GlobalPortal';
 import { Router } from 'pages/Routes';
 import { ReactNode } from 'react';

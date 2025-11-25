@@ -8,7 +8,12 @@ interface CodeDisplayProps extends Omit<BoxProps, 'children'> {
   showLineNumbers?: boolean;
 }
 
-export const CodeDisplay = ({ code, language = 'javascript', showLineNumbers = true, ...boxProps }: CodeDisplayProps) => {
+export const CodeDisplay = ({
+  code,
+  language = 'javascript',
+  showLineNumbers = true,
+  ...boxProps
+}: CodeDisplayProps) => {
   return (
     <Box {...boxProps}>
       <SyntaxHighlighter
@@ -26,4 +31,3 @@ export const CodeDisplay = ({ code, language = 'javascript', showLineNumbers = t
     </Box>
   );
 };
-
