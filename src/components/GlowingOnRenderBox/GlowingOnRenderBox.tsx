@@ -7,7 +7,7 @@ interface GlowingOnRenderBoxProps extends BoxProps {
 }
 export const GlowingOnRenderBox = (props: GlowingOnRenderBoxProps): JSX.Element => {
   const theme = useTheme();
-  const backgroundEl = useRef<HTMLDivElement>();
+  const backgroundEl = useRef<HTMLDivElement>(null);
   const renderCount = ++useRef(-1).current;
 
   useEffect(() => {
